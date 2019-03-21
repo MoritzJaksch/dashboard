@@ -1,7 +1,7 @@
 <template>
   <div class="NASA">
-    <p>NASA STUFF</p>
-    <img v-if="pictures[0].img_source" :src="pictures[0].img_source" alt="" />
+    <p>{{ pictures["img_src"] }}</p>
+    <img class="image-nasa" v-if="loaded" :src="picture" />
   </div>
 </template>
 
@@ -11,30 +11,51 @@ import axios from "axios";
 export default {
   name: "Nasa",
   props: {},
+  data() {
+    return {
+      pictures: [],
+      picture: "",
+      loaded: false
+    };
+  },
   methods: {
     randomNumber(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
+    getRandomPicture() {
+      let rnd = this.randomNumber(0, 24);
+      this.picture = this.pictures[rnd]["img_src"];
+    },
     getPicture() {
-      axios.get("http://localhost:5000/api/nasa").then(res => {
-        console.log("NASA STUFF: ", res);
-        this.pictures = res.data.photos;
-      });
+      axios
+        .get("http://localhost:5000/api/nasa")
+        .then(res => {
+          console.log("NASA STUFF: ", res.data);
+          this.pictures = res.data.photos;
+        })
+        .then(() => {
+          console.log("this.pictures: ", this.pictures);
+          this.getRandomPicture();
+          this.loaded = true;
+        });
     }
-  },
-  data() {
-    return {
-      pictures: {}
-    };
   },
   created() {
     this.getPicture();
-  }
+    setInterval(() => {
+      this.getRandomPicture();
+    }, 10000);
+  },
+  mounted() {},
+  updated() {}
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.image-nasa  {
+  height: 500px;
+  width: 500px;
+}
 h3 {
   margin: 40px 0 0;
 }
