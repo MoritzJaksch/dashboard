@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <Weather />
-    <Iss />
-    <Nasa />
-    <Twitter />
-    <Quote />
-    <Meetup />
+    <div id="widget-container">
+      <Weather />
+      <Iss />
+      <Nasa />
+      <Twitter />
+      <Quote />
+      <Meetup />
+      <PublicTransport />
+    </div>
   </div>
 </template>
 
@@ -18,6 +20,7 @@ import Nasa from "./components/Nasa.vue";
 import Twitter from "./components/Twitter.vue";
 import Quote from "./components/Quote.vue";
 import Meetup from "./components/Meetup.vue";
+import PublicTransport from "./components/PublicTransport.vue";
 
 export default {
   name: "app",
@@ -27,7 +30,8 @@ export default {
     Nasa,
     Twitter,
     Quote,
-    Meetup
+    Meetup,
+    PublicTransport
   },
   data() {
     return {};
@@ -42,8 +46,12 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#widget-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
 }
 </style>

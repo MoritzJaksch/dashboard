@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "leaflet": "^1.4.0",
+    "moment": "^2.24.0",
     "vue": "^2.6.6"
   },
   "devDependencies": {

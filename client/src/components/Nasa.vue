@@ -1,6 +1,5 @@
 <template>
   <div class="NASA">
-    <p>{{ pictures["img_src"] }}</p>
     <img class="image-nasa" v-if="loaded" :src="picture" />
   </div>
 </template>
@@ -52,7 +51,7 @@ export default {
 </script>
 
 <style scoped>
-.image-nasa  {
+img {
   height: 500px;
   width: 500px;
 }
