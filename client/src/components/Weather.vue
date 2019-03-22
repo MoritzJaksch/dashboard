@@ -1,11 +1,17 @@
 <template>
-  <div v-if="weather.current" class="weather">
+  <div v-if="loaded" class="weather">
     <div class="weather-container">
-      <img class="current" :src="weather.current.condition.icon" alt="" />
+      <div class="current-container">
+        <div class="current">
+          <img :src="weather.current.condition.icon" alt="" />
+          <p>{{ weather.current["temp_c"] }} C°</p>
+        </div>
+      </div>
 
       <div class="forecast-container">
         <div v-for="day in weather.forecast.forecastday" class="forecast">
           <p>{{ moments(day.date) }}</p>
+          <p>{{ day.day["avgtemp_c"] }} C°</p>
           <img :src="day.day.condition.icon" />
         </div>
       </div>
@@ -29,20 +35,23 @@ export default {
     getWeather() {
       axios
         .get(
-          "http://api.apixu.com/v1/forecast.json?key=0c7610c80c8e4fc78e3150630191903&q=tempelhof&days=7"
+          "http://api.apixu.com/v1/forecast.json?key=0c7610c80c8e4fc78e3150630191903&q=tempelhof&days=5"
         )
         .then(res => {
           this.weather = res.data;
           console.log(this.weather);
+          this.loaded = true;
         })
         .catch(err => {
+          this.loaded = false;
           console.log(err);
         });
     }
   },
   data() {
     return {
-      weather: {}
+      weather: {},
+      loaded: false
     };
   },
   created() {
@@ -62,6 +71,13 @@ export default {
   color: white;
   background-color: rgb(126, 126, 126);
   border-radius: 5px;
+  display: grid;
+  grid-template-rows: 40% 60%;
+}
+.forecast-container {
+  display: flex;
+}
+.current-container {
 }
 .forecast {
   padding: 5px;
@@ -70,13 +86,24 @@ export default {
   background-color: rgb(79, 78, 78);
   border-radius: 5px;
 }
-.forecast-container {
-  display: flex;
+.forecast img {
+  height: 60px;
 }
-.current {
+
+.current-container img {
   height: 100px;
   width: 100px;
 }
-.forecast p {
+.current-container p {
+  font-size: 4em;
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-bottom: 0;
+  height: 100px;
+  width: 200px;
+}
+.current {
+  display: flex;
+  margin-top: 4%;
 }
 </style>

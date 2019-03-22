@@ -22,6 +22,9 @@
       <div id="public-transport">
         <PublicTransport />
       </div>
+      <div id="clock">
+        <Clock />
+      </div>
     </div>
   </div>
 </template>
@@ -35,6 +38,7 @@ import Twitter from "./components/Twitter.vue";
 import Quote from "./components/Quote.vue";
 import Meetup from "./components/Meetup.vue";
 import PublicTransport from "./components/PublicTransport.vue";
+import Clock from "./components/Clock.vue";
 
 export default {
   name: "app",
@@ -45,7 +49,8 @@ export default {
     Twitter,
     Quote,
     Meetup,
-    PublicTransport
+    PublicTransport,
+    Clock
   },
   data() {
     return {};
@@ -67,7 +72,8 @@ export default {
   grid-area: 2 / 2 / 4 / 3;
 }
 #twitter {
-  grid-area: 2 / 3 / 4 / 5;
+  min-width: 500px;
+  grid-area: 2 / 3 / 4 / 4;
 }
 #meetup {
   grid-area: 2 / 6 / 7 / 7;
@@ -83,6 +89,9 @@ export default {
 }
 #public-transport {
   grid-area: 4 / 5 / 7 / 6;
+}
+#clock {
+  grid-area: 2 / 4 / 4 / 5;
 }
 
 #widget-container {
@@ -116,5 +125,40 @@ export default {
 body {
   background-color: rgb(47, 47, 47);
   margin: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  #widget-container {
+    height: 100%;
+    width: 100vw;
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: 1fr;
+
+    grid-gap: 1em;
+  }
+  #clock {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  #weather {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+  #twitter {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+  #meetup {
+    grid-area: 4 / 1 / 5 / 2;
+  }
+  #nasa {
+    grid-area: 5 / 1 / 6 / 2;
+  }
+  #quote {
+    grid-area: 6 / 1 / 7 / 2;
+  }
+  #iss {
+    grid-area: 7 / 1 / 8 / 2;
+  }
+  #public-transport {
+    grid-area: 8 / 1 / 9 / 2;
+  }
 }
 </style>

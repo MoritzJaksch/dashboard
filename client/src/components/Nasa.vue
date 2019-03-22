@@ -1,34 +1,32 @@
 <template>
   <div class="nasa">
-    <div class="widget-container">
+    <div v-if="loaded" class="loaded">
       <div class="title">
         <p>Mars Rover Cam</p>
       </div>
-      <div v-if="loaded" class="loaded">
-        <div class="info-container">
-          <div>
-            <p>Rover:</p>
-            <p>{{ picture.rover.name }}</p>
-          </div>
-          <div>
-            <p>Camera:</p>
-            <p>{{ picture.camera["full_name"] }}</p>
-          </div>
-          <div>
-            <p>Date:</p>
-            <p>{{ picture["earth_date"] }}</p>
-          </div>
-          <div>
-            <p>Sol:</p>
-            <p>{{ picture.sol }}</p>
-          </div>
+      <div class="info-container">
+        <div>
+          <p>Rover:</p>
+          <p>{{ picture.rover.name }}</p>
         </div>
-        <div class="image-container">
-          <img class="image-nasa" :src="picture['img_src']" />
+        <div>
+          <p>Camera:</p>
+          <p>{{ picture.camera.name }}</p>
+        </div>
+        <div>
+          <p>Date:</p>
+          <p>{{ picture["earth_date"] }}</p>
+        </div>
+        <div>
+          <p>Sol:</p>
+          <p>{{ picture.sol }}</p>
         </div>
       </div>
-      <div v-else class="not-loaded"></div>
+      <div class="image-container">
+        <img class="image-nasa" :src="picture['img_src']" />
+      </div>
     </div>
+    <div v-else class="not-loaded"></div>
   </div>
 </template>
 
@@ -86,12 +84,14 @@ img {
   object-fit: cover;
 }
 .image-container {
-  width: 70%;
-  height: 90%;
+  grid-area: 2/2/3/3;
+  width: 100%;
+  height: 100%;
 }
 .info-container {
-  width: 20%;
-  height: 90%;
+  grid-area: 2 / 1 / 3 / 2;
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
   background-color: white;
   display: flex;
@@ -106,11 +106,27 @@ img {
 .info-container div p:nth-child(odd) {
   font-weight: bold;
 }
+.title {
+  grid-area: 1/1/2/3;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.title p {
+  margin: 0 auto;
+}
 
 .loaded {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  height: 90%;
+  width: 95%;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 10% 90%;
+  grid-gap: 2%;
 }
 .not-loaded {
   height: 100%;
@@ -118,14 +134,16 @@ img {
 }
 
 .nasa {
+  height: 100%;
+  width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-around;
 }
 
 .widget-container {
-  height: 100%;
+  /* height: 100%;
   display: grid;
-  grid-template-rows: 10% 90%;
+  grid-template-rows: 10% 90%; */
 }
 </style>

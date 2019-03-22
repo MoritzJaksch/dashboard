@@ -27,7 +27,7 @@ app.get("/api/meetup", (req, res) => {
         secrets.meetupKey
         )
         .then(meetups => {
-            let events = meetups.data.events.slice(0, 5);
+            let events = meetups.data.events.slice(0, 4);
             res.json(events);
         })
         .catch(err => {

@@ -81,4 +81,10 @@ img {
   width: 70%;
   font-size: 1.2em;
 }
+a:link {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
 </style>

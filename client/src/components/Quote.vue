@@ -1,8 +1,12 @@
 <template>
   <div class="quote">
-    <div v-if="this.loaded">
-      <p>{{ this.quote.author }} said:</p>
-      <p>{{ this.quote.quote }}</p>
+    <div class="loaded" v-if="this.loaded">
+      <p class="author">{{ this.quote.author }} once said:</p>
+      <p class="qod">{{ this.quote.quote }}</p>
+    </div>
+    <div class="loaded" v-else>
+      <p class="author">Computer says:</p>
+      <p class="qod">No.</p>
     </div>
   </div>
 </template>
@@ -44,6 +48,30 @@ export default {
   border-radius: 5px;
 }
 p {
-  margin: 0;
+  margin: 4%;
+  padding: 4%;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.author {
+  height: 15%;
+  width: 90%;
+  font-weight: bold;
+}
+.qod {
+  height: 75%;
+  width: 90%;
+  font-weight: bolder;
+}
+
+.loaded {
+  height: 100%;
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 </style>
