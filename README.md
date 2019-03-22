@@ -4,7 +4,7 @@ Created a Dashboard that shows weather, tweets, meet ups, the position of the IS
 
 
 
-[click here](challenging-dashboard.herokuapp.com) for the live version
+[click here](<challenging-dashboard.herokuapp.com>) for the live version
 
 
 
@@ -18,8 +18,8 @@ The Frontend is built with vue.js on a node/express backend to handle API reques
 
 To run the App on your local machine, you need access to some APIs:
 
-* [Meetup API](https://secure.meetup.com/meetup_api/key/) - requires a standard Meetup account
-* [NASA API](https://api.nasa.gov/) - requires some information (email, name, reason)
+* [Meetup API](<https://secure.meetup.com/meetup_api/key/>) - requires a standard Meetup account
+* [NASA API](<https://api.nasa.gov/>) - requires some information (email, name, reason)
 * [ISS API](<http://open-notify.org/Open-Notify-API/ISS-Location-Now/>) - Get the ISS position - free to use
 * [Twitter API](<https://developer.twitter.com/en/docs.html>) - requires some research in the docs and sending around a bearer token
 * [Apixu](<https://www.apixu.com/>) - Weather API. No log in required
