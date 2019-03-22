@@ -4,7 +4,7 @@ Created a Dashboard that shows weather, tweets, meet ups, the position of the IS
 
 
 
-[click here](<challenging-dashboard.herokuapp.com>) for the live version
+[click here](<https://challenging-dashboard.herokuapp.com>) for the live version
 
 
 
