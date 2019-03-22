@@ -26,7 +26,7 @@ export default {
   methods: {},
   created() {
     axios
-      .get("http://quotes.rest/qod.json")
+      .get("https://quotes.rest/qod.json")
       .then(res => {
         this.quote = res.data.contents.quotes[0];
       })

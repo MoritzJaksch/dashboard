@@ -21,7 +21,7 @@ export default {
   methods: {
     getPosition() {
       axios
-        .get("http://api.open-notify.org/iss-now.json")
+        .get("/api/iss")
         .then(response => {
           this.issPosition = response.data.iss_position;
           this.loaded = true;
@@ -62,7 +62,7 @@ export default {
     ).addTo(this.map);
 
     this.myIcon = L.icon({
-      iconUrl: "http://moritzjaksch.com/stuff/ISS_red.png",
+      iconUrl: "https://moritzjaksch.com/stuff/ISS_red.png",
       iconSize: [70, 70],
       iconAnchor: [25, 25],
       popupAnchor: [-3, -76]

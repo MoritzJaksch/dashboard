@@ -1,4 +1,7 @@
-const secrets = process.env || require("./secrets.json");
+const secrets =
+  process.env.NODE_ENV === "production"
+      ? process.env
+      : require("./secrets.json");
 const https = require("https");
 
 module.exports.getToken = function getToken(cb) {

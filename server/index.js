@@ -15,7 +15,10 @@ const myGetTweetsByScreenName = util.promisify(getTweetsByScreenName);
 
 const app = express();
 
-const secrets = process.env || require("./secrets.json");
+const secrets =
+  process.env.NODE_ENV === "production"
+      ? process.env
+      : require("./secrets.json");
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -35,6 +38,11 @@ app.get("/api/meetup", (req, res) => {
         });
 });
 
+app.get("/api/iss", (req, res) => {
+    axios.get("http://api.open-notify.org/iss-now.json").then(coords => {
+        res.json(coords.data);
+    });
+});
 app.get("/api/nasa", (req, res) => {
     axios
         .get(

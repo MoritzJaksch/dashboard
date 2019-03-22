@@ -49,7 +49,7 @@ export default {
         )
         .then(res => {
           this.weather = res.data;
-          // this.loaded = true;
+          this.loaded = true;
         })
         .catch(err => {
           this.loaded = false;
