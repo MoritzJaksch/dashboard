@@ -72,7 +72,7 @@ export default {
   grid-area: 2 / 2 / 4 / 3;
 }
 #twitter {
-  min-width: 500px;
+  min-width: 375px;
   grid-area: 2 / 3 / 4 / 4;
 }
 #meetup {
@@ -98,9 +98,9 @@ export default {
   height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-columns: 0.5fr repeat(5, 1fr) 0.5fr;
+  grid-template-columns: 5% repeat(5, 1fr) 5%;
   grid-template-rows: repeat(7, 1fr);
-  grid-gap: 2em;
+  grid-gap: 1em;
 }
 
 /* CLASSES */
@@ -176,12 +176,15 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-  #widget-container {
-    height: 100%;
-    width: 100vw;
-    grid-template-rows: repeat(8, 1fr);
-    grid-template-columns: 1fr;
+  body {
+    width: 100%;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
 
+  #widget-container {
+    grid-template-columns: 1fr;
+    width: 100%;
     grid-gap: 1em;
   }
   #clock {
@@ -189,6 +192,7 @@ body {
   }
   #weather {
     grid-area: 2 / 1 / 3 / 2;
+    max-height: 300px;
   }
   #twitter {
     grid-area: 3 / 1 / 4 / 2;

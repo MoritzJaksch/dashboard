@@ -51,6 +51,7 @@ p {
 .author {
   height: 15%;
   width: 90%;
+  min-width: 245px;
   font-weight: bold;
 }
 .qod {

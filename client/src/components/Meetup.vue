@@ -81,6 +81,7 @@ p {
   background-color: rgb(159, 153, 161);
   height: 20%;
   width: 95%;
+  min-width: 245px;
   border-radius: 5px;
 }
 

@@ -17,6 +17,16 @@
       </div>
     </div>
   </div>
+
+  <div v-else class="weather">
+    <div class="container-not-loaded">
+      <div class="lds-loading">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -35,16 +45,14 @@ export default {
     getWeather() {
       axios
         .get(
-          "http://api.apixu.com/v1/forecast.json?key=0c7610c80c8e4fc78e3150630191903&q=tempelhof&days=5"
+          "https://api.apixu.com/v1/forecast.json?key=0c7610c80c8e4fc78e3150630191903&q=tempelhof&days=5"
         )
         .then(res => {
           this.weather = res.data;
-          console.log(this.weather);
-          this.loaded = true;
+          // this.loaded = true;
         })
         .catch(err => {
           this.loaded = false;
-          console.log(err);
         });
     }
   },
@@ -75,6 +83,7 @@ export default {
 }
 .forecast-container {
   display: flex;
+  justify-content: space-around;
 }
 .forecast {
   padding: 5px;
@@ -102,5 +111,50 @@ export default {
 .current {
   display: flex;
   margin-top: 4%;
+}
+
+/* LOADER CSS */
+.container-not-loaded {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lds-loading {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-loading div {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  width: 13px;
+  background: #fff;
+  animation: lds-loading 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-loading div:nth-child(1) {
+  left: 6px;
+  animation-delay: -0.24s;
+}
+.lds-loading div:nth-child(2) {
+  left: 26px;
+  animation-delay: -0.12s;
+}
+.lds-loading div:nth-child(3) {
+  left: 45px;
+  animation-delay: 0;
+}
+@keyframes lds-loading {
+  0% {
+    top: 6px;
+    height: 51px;
+  }
+  50%,
+  100% {
+    top: 19px;
+    height: 26px;
+  }
 }
 </style>

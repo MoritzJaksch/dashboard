@@ -26,7 +26,35 @@
         <img class="image-nasa" :src="picture['img_src']" />
       </div>
     </div>
-    <div v-else class="not-loaded"></div>
+    <div v-else class="not-loaded">
+      <div class="title">
+        <p>something went wrong...</p>
+      </div>
+      <div class="info-container">
+        <div>
+          <p>Rover:</p>
+          <p>...</p>
+        </div>
+        <div>
+          <p>Camera:</p>
+          <p>...</p>
+        </div>
+        <div>
+          <p>Date:</p>
+          <p>...</p>
+        </div>
+        <div>
+          <p>Sol:</p>
+          <p>...</p>
+        </div>
+      </div>
+      <div class="image-container">
+        <img
+          class="image-nasa"
+          src="https://media.giphy.com/media/z0tTiODyfJmYo/giphy.gif"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -62,6 +90,9 @@ export default {
           console.log("this.pictures: ", this.pictures);
           this.getRandomPicture();
           this.loaded = true;
+        })
+        .catch(err => {
+          this.loaded = false;
         });
     }
   },
@@ -129,8 +160,12 @@ img {
   grid-gap: 2%;
 }
 .not-loaded {
-  height: 100%;
-  width: 100%;
+  height: 90%;
+  width: 95%;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 10% 90%;
+  grid-gap: 2%;
 }
 
 .nasa {

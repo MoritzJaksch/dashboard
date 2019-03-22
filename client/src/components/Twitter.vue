@@ -1,5 +1,5 @@
 <template>
-  <div class="twitter">
+  <div v-if="loaded" class="twitter">
     <a href="https://twitter.com/DevinCow">
       <div class="tweet" v-if="tweets.bigBen">
         <img :src="tweets.bigBen[0].user.profile_image_url" alt="" />
@@ -14,6 +14,15 @@
       </div>
     </a>
   </div>
+  <div v-else class="twitter">
+    <div class="container-not-loaded">
+      <div class="lds-loading">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -24,6 +33,7 @@ export default {
   props: {},
   data() {
     return {
+      loaded: false,
       tweets: {}
     };
   },
@@ -37,9 +47,11 @@ export default {
         .then(res => {
           this.tweets = res.data;
         })
-        .then(() => {})
+        .then(() => {
+          this.loaded = true;
+        })
         .catch(err => {
-          console.log(err);
+          this.loaded = false;
         });
     }
   },
@@ -80,5 +92,50 @@ a:link {
 }
 a:hover {
   text-decoration: underline;
+}
+
+/* LOADER CSS */
+.container-not-loaded {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lds-loading {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-loading div {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  width: 13px;
+  background: #fff;
+  animation: lds-loading 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-loading div:nth-child(1) {
+  left: 6px;
+  animation-delay: -0.24s;
+}
+.lds-loading div:nth-child(2) {
+  left: 26px;
+  animation-delay: -0.12s;
+}
+.lds-loading div:nth-child(3) {
+  left: 45px;
+  animation-delay: 0;
+}
+@keyframes lds-loading {
+  0% {
+    top: 6px;
+    height: 51px;
+  }
+  50%,
+  100% {
+    top: 19px;
+    height: 26px;
+  }
 }
 </style>

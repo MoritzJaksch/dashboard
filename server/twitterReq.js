@@ -1,4 +1,4 @@
-const secrets = process.env || require("./secrets.json");
+const secrets = require("./secrets.json");
 const https = require("https");
 
 module.exports.getToken = function getToken(cb) {

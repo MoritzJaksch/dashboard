@@ -92,6 +92,7 @@ p {
   bottom: 1%;
 }
 .map {
+  min-height: 300px;
   height: 100%;
   width: 100%;
   border-radius: 5px;
