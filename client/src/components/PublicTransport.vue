@@ -65,22 +65,11 @@ export default {
 </script>
 
 <style scoped>
-.image-nasa  {
-  height: 500px;
-  width: 500px;
-}
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.departure-container {
+  background-color: rgb(125, 125, 125);
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
 }
 </style>

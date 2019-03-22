@@ -1,14 +1,14 @@
 <template>
-  <div class="Twitter">
-    <a href="https://twitter.com/big_ben_clock">
-      <div class="big-ben" v-if="tweets.bigBen">
+  <div class="twitter">
+    <a href="https://twitter.com/DevinCow">
+      <div class="tweet" v-if="tweets.bigBen">
         <img :src="tweets.bigBen[0].user.profile_image_url" alt="" />
         <p>{{ tweets.bigBen[0].text }}</p>
       </div>
     </a>
 
     <a href="https://twitter.com/nytimes">
-      <div class="ny-times" v-if="tweets.nytimes">
+      <div class="tweet" v-if="tweets.nytimes">
         <img :src="tweets.nytimes[0].user.profile_image_url" alt="" />
         <p>{{ tweets.nytimes[0].text }}</p>
       </div>
@@ -51,20 +51,34 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.twitter {
+  background-color: rgb(115, 115, 115);
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+img {
+  height: 70px;
+  width: 70px;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+.tweet {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  width: 90%;
+  margin-left: 5%;
+  border-radius: 5px;
 }
-a {
-  color: #42b983;
+
+.tweet p {
+  width: 70%;
+  font-size: 1.2em;
 }
 </style>

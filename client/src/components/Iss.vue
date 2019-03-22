@@ -1,6 +1,11 @@
 <template>
   <div class="iss">
-    <p>{{ issPosition }}</p>
+    <div class="text">
+      <h3>Position der ISS</h3>
+      <p>Längengrad: {{ issPosition.longitude }}</p>
+      <p>Breitengrad: {{ issPosition.latitude }}</p>
+    </div>
+
     <div id="map" class="map"></div>
   </div>
 </template>
@@ -19,15 +24,18 @@ export default {
         .get("http://api.open-notify.org/iss-now.json")
         .then(response => {
           this.issPosition = response.data.iss_position;
+          this.loaded = true;
         })
         .catch(err => {
+          this.loaded = false;
           console.log("error in ISS axios: ", err);
         });
     }
   },
   data() {
     return {
-      issPosition: { latitude: 0, longitude: 0 }
+      issPosition: { latitude: 0, longitude: 0 },
+      loaded: false
     };
   },
   created() {
@@ -76,23 +84,27 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+h3 {
+  width: 50%;
+}
+p {
+  width: 50%;
+  bottom: 1%;
+}
 .map {
-  height: 500px;
-  width: 500px;
+  height: 100%;
+  width: 100%;
   border-radius: 5px;
 }
-h3 {
-  margin: 40px 0 0;
+
+.text {
+  width: 100%;
+  z-index: 500;
+  position: absolute;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.iss {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 </style>

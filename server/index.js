@@ -38,7 +38,7 @@ app.get("/api/meetup", (req, res) => {
 app.get("/api/nasa", (req, res) => {
     axios
         .get(
-            "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=3&api_key=" +
+            "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1097&page=1&api_key=" +
         secrets.nasaKey
         )
         .then(response => {
@@ -66,7 +66,7 @@ app.get("/api/twitter/hashtag", (req, res) => {
 app.get("/api/twitter/user", (req, res) => {
     myGetToken().then(token =>
         Promise.all([
-            myGetTweetsByScreenName(token, "big_ben_clock"),
+            myGetTweetsByScreenName(token, "DevinCow"),
             myGetTweetsByScreenName(token, "nytimes")
         ])
             .then(responses => {

@@ -1,13 +1,11 @@
 <template>
   <div v-if="loaded" class="meetup-container">
     <div class="meetup" v-for="meetup in meetups">
-      <div>
-        <a :href="meetup.link">
-          <p>What: {{ meetup.name }}</p>
-          <p>Where: {{ meetup.venue.name }}</p>
-          <p>Who: {{ meetup.group.name }}</p>
-        </a>
-      </div>
+      <a :href="meetup.link">
+        <p>What: {{ meetup.name }}</p>
+        <p>Where: {{ meetup.venue.name }}</p>
+        <p>Who: {{ meetup.group.name }}</p>
+      </a>
     </div>
   </div>
 </template>
@@ -35,29 +33,29 @@ export default {
         this.loaded = true;
         console.log("meetup: ", this.meetups);
       });
-  },
-  mounted() {},
-  updated() {}
+  }
 };
 </script>
 
 <style scoped>
-.image-nasa  {
-  height: 500px;
-  width: 500px;
+.meetup-container {
+  background-color: rgb(90, 88, 101);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 5px;
 }
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+
+.meetup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: rgb(159, 153, 161);
+  width: 95%;
+  border-radius: 5px;
 }
 </style>
