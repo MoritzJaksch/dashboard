@@ -1,10 +1,14 @@
 <template>
   <div class="departure-container">
     <div v-if="loaded" class="loaded">
+      <div class="title-container">
+        <p>Abfahrten S+U Tempelhof</p>
+      </div>
       <div class="subway-container">
         <div v-for="departure in subway">
           <p>
-            {{ departure.line.name }} nach {{ departure.direction }}
+            <b>{{ departure.line.name }} nach {{ departure.direction }}</b
+            ><br />
             {{ moments(departure.when) }}
           </p>
         </div>
@@ -13,7 +17,8 @@
       <div class="train-container">
         <div v-for="departure in train">
           <p>
-            {{ departure.line.name }} nach {{ departure.direction }}
+            <b>{{ departure.line.name }} nach {{ departure.direction }}</b
+            ><br />
             {{ moments(departure.when) }}
           </p>
         </div>
@@ -57,27 +62,33 @@ export default {
   },
   methods: {
     moments(date) {
-      return moment(date).fromNow();
+      return moment(date)
+        .locale("de")
+        .fromNow();
+    },
+    getDepartures() {
+      axios
+        .get(
+          "https://1.bvg.transport.rest/stations/900000068201/departures?when=now"
+        )
+        .then(departures => {
+          this.subway = departures.data.filter(departure => {
+            return departure.line.symbol == "U";
+          });
+          this.train = departures.data.filter(departure => {
+            return departure.line.symbol == "S";
+          });
+          this.loaded = true;
+        })
+        .catch(err => {
+          console.log(err);
+          this.loaded = false;
+        });
+      setTimeout(this.getDepartures, 30000);
     }
   },
   created() {
-    axios
-      .get(
-        "https://1.bvg.transport.rest/stations/900000068201/departures?when=now"
-      )
-      .then(departures => {
-        this.subway = departures.data.filter(departure => {
-          return departure.line.symbol == "U";
-        });
-        this.train = departures.data.filter(departure => {
-          return departure.line.symbol == "S";
-        });
-        this.loaded = true;
-      })
-      .catch(err => {
-        console.log(err);
-        this.loaded = false;
-      });
+    this.getDepartures();
   },
   mounted() {},
   updated() {}
@@ -85,12 +96,6 @@ export default {
 </script>
 
 <style scoped>
-.departure-container {
-  background-color: rgb(125, 125, 125);
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-}
 .loaded {
   display: flex;
   flex-direction: column;
@@ -98,17 +103,37 @@ export default {
   justify-content: space-around;
 }
 .subway-container {
-  height: 45%;
-  width: 90%;
-  background-color: white;
-  border-radius: 5px;
-  overflow: hidden;
-}
-.train-container {
-  height: 45%;
+  height: 40%;
   width: 90%;
   background-color: white;
   border-radius: 5px;
   overflow: scroll;
+}
+.subway-container p {
+  margin-left: 4%;
+}
+
+.train-container {
+  height: 40%;
+  width: 90%;
+  background-color: white;
+  border-radius: 5px;
+  overflow: scroll;
+}
+.train-container p {
+  margin-left: 4%;
+}
+
+.title-container {
+  height: 10%;
+  width: 90%;
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.title-container p {
+  margin-top: 10px;
 }
 </style>

@@ -79,10 +79,10 @@ export default {
   grid-area: 2 / 6 / 7 / 7;
 }
 #nasa {
-  grid-area: 4 / 2 / 7 / 3;
+  grid-area: 4 / 3 / 7 / 5;
 }
 #iss {
-  grid-area: 4 / 3 / 7 / 5;
+  grid-area: 4 / 2 / 7 / 3;
 }
 #quote {
   grid-area: 2 / 5 / 4 / 6;
@@ -107,6 +107,9 @@ export default {
 .weather {
   height: 100%;
   width: 100%;
+  background-color: rgb(108, 108, 108);
+  border-radius: 5px;
+  box-shadow: 7px 9px 23px -4px rgba(0, 0, 0, 0.61);
 }
 
 .nasa {
@@ -114,6 +117,51 @@ export default {
   width: 100%;
   background-color: rgb(108, 108, 108);
   border-radius: 5px;
+  box-shadow: 7px 9px 23px -4px rgba(0, 0, 0, 0.61);
+}
+
+.quote {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(108, 108, 108);
+  border-radius: 5px;
+  box-shadow: 7px 9px 23px -4px rgba(0, 0, 0, 0.61);
+}
+
+.time {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(108, 108, 108);
+  color: white;
+  border-radius: 5px;
+  box-shadow: 7px 9px 23px -4px rgba(0, 0, 0, 0.61);
+}
+.meetup-container {
+  background-color: rgb(108, 108, 108);
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 7px 9px 23px -4px rgba(0, 0, 0, 0.61);
+}
+.departure-container {
+  background-color: rgb(108, 108, 108);
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 7px 9px 23px -4px rgba(0, 0, 0, 0.61);
+}
+.twitter {
+  background-color: rgb(108, 108, 108);
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  box-shadow: 7px 9px 23px -4px rgba(0, 0, 0, 0.61);
+}
+.iss {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(108, 108, 108);
+  box-shadow: 7px 9px 23px -4px rgba(0, 0, 0, 0.61);
 }
 .loaded {
   height: 100%;
@@ -123,7 +171,7 @@ export default {
 /* tags */
 
 body {
-  background-color: rgb(47, 47, 47);
+  background-color: rgb(88, 88, 88);
   margin: 0;
 }
 

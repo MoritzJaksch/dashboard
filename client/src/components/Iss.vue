@@ -98,13 +98,12 @@ p {
 }
 
 .text {
+  left: 4%;
   width: 100%;
   z-index: 500;
   position: absolute;
 }
 .iss {
   position: relative;
-  width: 100%;
-  height: 100%;
 }
 </style>

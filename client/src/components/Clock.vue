@@ -42,15 +42,11 @@ export default {
 
 <style scoped>
 .time {
-  height: 100%;
-  width: 100%;
   font-size: 3em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background-color: white;
-  border-radius: 5px;
 }
 .time p:nth-child(odd) {
   font-weight: bold;

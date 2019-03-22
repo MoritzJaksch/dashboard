@@ -69,15 +69,12 @@ export default {
   width: 100%;
   height: 100%;
   color: white;
-  background-color: rgb(126, 126, 126);
   border-radius: 5px;
   display: grid;
   grid-template-rows: 40% 60%;
 }
 .forecast-container {
   display: flex;
-}
-.current-container {
 }
 .forecast {
   padding: 5px;

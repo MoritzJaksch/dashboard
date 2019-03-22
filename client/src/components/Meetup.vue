@@ -6,7 +6,9 @@
       </div>
       <div class="meetup" v-for="meetup in meetups">
         <a :href="meetup.link">
-          <p><b>What:</b> {{ meetup.name }}</p>
+          <p class="title">
+            {{ meetup.name }}
+          </p>
           <p><b>Where:</b> {{ meetup.venue.name }}</p>
           <p><b>Who:</b> {{ meetup.group.name }}</p>
           <p>
@@ -64,12 +66,6 @@ export default {
 p {
   margin: 0 3% 0 3%;
 }
-.meetup-container {
-  background-color: rgb(90, 88, 101);
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-}
 .loaded {
   display: flex;
   flex-direction: column;
@@ -97,6 +93,18 @@ p {
   height: 10%;
   width: 95%;
   border-radius: 5px;
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: white;
+}
+p {
+  color: lightgrey;
 }
 
 a:link {

@@ -53,10 +53,6 @@ export default {
 
 <style scoped>
 .twitter {
-  background-color: rgb(115, 115, 115);
-  border-radius: 5px;
-  height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -79,7 +75,7 @@ img {
 
 .tweet p {
   width: 70%;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 a:link {
   text-decoration: none;

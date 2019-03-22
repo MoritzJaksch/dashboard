@@ -41,12 +41,6 @@ export default {
 </script>
 
 <style scoped>
-.quote {
-  height: 100%;
-  width: 100%;
-  background-color: rgb(126, 126, 126);
-  border-radius: 5px;
-}
 p {
   margin: 4%;
   padding: 4%;
