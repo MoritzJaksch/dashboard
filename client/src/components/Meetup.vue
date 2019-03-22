@@ -50,13 +50,11 @@ export default {
       })
       .then(() => {
         this.loaded = true;
-        console.log("meetup: ", this.meetups);
       })
       .then(() => {
         let now = moment("2019-03-26 18:30")
           .locale("de")
           .format("llll");
-        console.log("time in now: ", now);
       });
   }
 };

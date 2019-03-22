@@ -3,14 +3,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const axios = require("axios");
 const util = require("util");
-const {
-    getToken,
-    getTweetsByHashtag,
-    getTweetsByScreenName
-} = require("./twitterReq.js");
+const { getToken, getTweetsByScreenName } = require("./twitterReq.js");
 
 const myGetToken = util.promisify(getToken);
-const myGetTweetsByHashtag = util.promisify(getTweetsByHashtag);
 const myGetTweetsByScreenName = util.promisify(getTweetsByScreenName);
 
 const app = express();
@@ -55,20 +50,6 @@ app.get("/api/nasa", (req, res) => {
         .catch(err => {
             console.log("err in NASA: ", err);
         });
-});
-
-app.get("/api/twitter/hashtag", (req, res) => {
-    myGetToken().then(token =>
-        Promise.all([myGetTweetsByHashtag(token, "nerdypickuplines")])
-            .then(responses => {
-                res.json({
-                    links: responses
-                });
-            })
-            .catch(err => {
-                console.log("err in TWITTER hashtag: ", err);
-            })
-    );
 });
 
 app.get("/api/twitter/user", (req, res) => {

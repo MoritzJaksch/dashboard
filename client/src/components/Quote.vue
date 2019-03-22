@@ -32,7 +32,6 @@ export default {
       })
       .then(() => {
         this.loaded = true;
-        console.log("QUOTES: ", this.quote);
       });
   },
   mounted() {},

@@ -83,11 +83,9 @@ export default {
       axios
         .get("/api/nasa")
         .then(res => {
-          console.log("NASA STUFF: ", res.data);
           this.pictures = res.data.photos;
         })
         .then(() => {
-          console.log("this.pictures: ", this.pictures);
           this.getRandomPicture();
           this.loaded = true;
         })
