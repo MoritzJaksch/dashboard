@@ -66,7 +66,7 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: rgb(46, 46, 46);
 }
 #weather {
   grid-area: 2 / 2 / 4 / 3;

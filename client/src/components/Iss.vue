@@ -62,8 +62,8 @@ export default {
     ).addTo(this.map);
 
     this.myIcon = L.icon({
-      iconUrl: "http://open-notify.org/Open-Notify-API/map/ISSIcon.png",
-      iconSize: [50, 50],
+      iconUrl: "http://moritzjaksch.com/stuff/ISS_red.png",
+      iconSize: [70, 70],
       iconAnchor: [25, 25],
       popupAnchor: [-3, -76]
     });

@@ -53,7 +53,7 @@ export default {
     },
     getPicture() {
       axios
-        .get("http://localhost:5000/api/nasa")
+        .get("/api/nasa")
         .then(res => {
           console.log("NASA STUFF: ", res.data);
           this.pictures = res.data.photos;

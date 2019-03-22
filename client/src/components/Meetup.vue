@@ -44,7 +44,7 @@ export default {
   },
   created() {
     axios
-      .get("http://localhost:5000/api/meetup")
+      .get("/api/meetup")
       .then(res => {
         this.meetups = res.data;
       })
@@ -112,5 +112,6 @@ a:link {
 }
 a:hover {
   text-decoration: underline;
+  color: white;
 }
 </style>
