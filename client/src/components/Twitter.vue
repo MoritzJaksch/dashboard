@@ -37,9 +37,7 @@ export default {
         .then(res => {
           this.tweets = res.data;
         })
-        .then(() => {
-          console.log(this.tweets);
-        })
+        .then(() => {})
         .catch(err => {
           console.log(err);
         });
