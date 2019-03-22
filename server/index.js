@@ -15,7 +15,7 @@ const myGetTweetsByScreenName = util.promisify(getTweetsByScreenName);
 
 const app = express();
 
-const secrets = require("./secrets.json");
+const secrets = process.env || require("./secrets.json");
 
 app.use(bodyParser.json());
 app.use(cors());
