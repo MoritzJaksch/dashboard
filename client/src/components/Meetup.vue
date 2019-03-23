@@ -2,7 +2,7 @@
   <div class="meetup-container">
     <div v-if="loaded" class="loaded">
       <div class="infobox">
-        Meetups in Berlin:
+        MEETUPS IN BERLIN:
       </div>
       <div class="meetup" v-for="meetup in meetups">
         <a :href="meetup.link">
@@ -18,7 +18,20 @@
         >
       </div>
     </div>
-    <div v-else class="loaded"></div>
+    <div v-else class="loaded">
+      <div class="infobox">
+        No connection...
+      </div>
+      <div class="meetup" v-for="i in 4">
+        <div class="container-not-loaded">
+          <div class="lds-loading">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -51,10 +64,8 @@ export default {
       .then(() => {
         this.loaded = true;
       })
-      .then(() => {
-        let now = moment("2019-03-26 18:30")
-          .locale("de")
-          .format("llll");
+      .catch(err => {
+        this.loaded = false;
       });
   }
 };
@@ -112,5 +123,50 @@ a:link {
 a:hover {
   text-decoration: underline;
   color: white;
+}
+
+/* LOADER CSS */
+.container-not-loaded {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lds-loading {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-loading div {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  width: 13px;
+  background: #fff;
+  animation: lds-loading 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-loading div:nth-child(1) {
+  left: 6px;
+  animation-delay: -0.24s;
+}
+.lds-loading div:nth-child(2) {
+  left: 26px;
+  animation-delay: -0.12s;
+}
+.lds-loading div:nth-child(3) {
+  left: 45px;
+  animation-delay: 0;
+}
+@keyframes lds-loading {
+  0% {
+    top: 6px;
+    height: 51px;
+  }
+  50%,
+  100% {
+    top: 19px;
+    height: 26px;
+  }
 }
 </style>

@@ -34,9 +34,14 @@ app.get("/api/meetup", (req, res) => {
 });
 
 app.get("/api/iss", (req, res) => {
-    axios.get("http://api.open-notify.org/iss-now.json").then(coords => {
-        res.json(coords.data);
-    });
+    axios
+        .get("http://api.open-notify.org/iss-now.json")
+        .then(coords => {
+            res.json(coords.data);
+        })
+        .catch(err => {
+            console.log("err in ISS: ", err);
+        });
 });
 app.get("/api/nasa", (req, res) => {
     axios

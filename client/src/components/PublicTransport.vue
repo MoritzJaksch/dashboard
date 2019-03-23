@@ -12,7 +12,6 @@
             {{ moments(departure.when) }}
           </p>
         </div>
-        <p></p>
       </div>
       <div class="train-container">
         <div v-for="departure in train">
@@ -22,17 +21,19 @@
             {{ moments(departure.when) }}
           </p>
         </div>
-        <p></p>
       </div>
     </div>
     <div v-else class="loaded">
+      <div class="title-container">
+        <p>Abfahrten S+U Tempelhof</p>
+      </div>
+
       <div class="subway-container">
         <div>
           <p>
             Momentan ist leider keine Auskunft verfügbar
           </p>
         </div>
-        <p></p>
       </div>
       <div class="train-container">
         <div>
@@ -40,7 +41,6 @@
             Momentan ist leider keine Auskunft verfügbar
           </p>
         </div>
-        <p></p>
       </div>
     </div>
   </div>
@@ -81,7 +81,6 @@ export default {
           this.loaded = true;
         })
         .catch(err => {
-          console.log(err);
           this.loaded = false;
         });
       setTimeout(this.getDepartures, 30000);
@@ -104,7 +103,7 @@ export default {
 }
 .subway-container {
   height: 40%;
-  width: 90%;
+  width: 95%;
   background-color: white;
   border-radius: 5px;
   overflow: scroll;
@@ -115,7 +114,7 @@ export default {
 
 .train-container {
   height: 40%;
-  width: 90%;
+  width: 95%;
   background-color: white;
   border-radius: 5px;
   overflow: scroll;
@@ -126,7 +125,7 @@ export default {
 
 .title-container {
   height: 10%;
-  width: 90%;
+  width: 95%;
   background-color: white;
   border-radius: 5px;
   text-align: center;

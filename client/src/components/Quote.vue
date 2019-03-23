@@ -32,6 +32,9 @@ export default {
       })
       .then(() => {
         this.loaded = true;
+      })
+      .catch(err => {
+        this.loaded = false;
       });
   },
   mounted() {},
@@ -50,7 +53,6 @@ p {
 .author {
   height: 15%;
   width: 90%;
-  min-width: 245px;
   font-weight: bold;
 }
 .qod {

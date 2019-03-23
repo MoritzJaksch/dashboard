@@ -73,6 +73,7 @@ export default {
 }
 #twitter {
   min-width: 375px;
+  height: 340px;
   grid-area: 2 / 3 / 4 / 4;
 }
 #meetup {
@@ -85,6 +86,7 @@ export default {
   grid-area: 4 / 2 / 7 / 3;
 }
 #quote {
+  min-width: 250px;
   grid-area: 2 / 5 / 4 / 6;
 }
 #public-transport {
